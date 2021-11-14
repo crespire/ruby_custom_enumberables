@@ -62,3 +62,18 @@ p arr3.my_each_with_index
 puts 'Testing #each block, output should be duplicated'
 p arr3.each_with_index { |item, index| puts "#{index}: #{item}" }
 p arr3.my_each_with_index { |item, index| puts "#{index}: #{item}" }
+
+
+
+puts " "
+print "Press enter to move on to #my_all? tests"
+gets
+system('clear') || system('cls')
+
+puts "There should be 6 trues below, as each line runs built in all against my_all and checks if results are equal"
+p %w[ant bear cat].all? { |word| word.length >= 3 } == %w[ant bear cat].my_all? { |word| word.length >= 3 }
+p %w[ant bear cat].all? { |word| word.length >= 4 } == %w[ant bear cat].my_all? { |word| word.length >= 4 }
+p %w[ant bear cat].all?(/t/) == %w[ant bear cat].my_all?(/t/)
+p [1, 2i, 3.14].all?(Numeric) == [1, 2i, 3.14].my_all?(Numeric)
+p [nil, true, 99].all? == [nil, true, 99].my_all?
+p [].all? == [].my_all?
