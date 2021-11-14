@@ -10,9 +10,7 @@ module Enumerable
   end
 
   def my_each_with_index(*args)
-    unless block_given?
-      return args.empty? ? to_enum(:my_each_with_index) : to_enum(:my_each_with_index, *args)
-    end
+    return to_enum(:my_each_with_index, *args) unless block_given?
 
     length.times do |i|
       yield self[i], i
@@ -37,14 +35,26 @@ module Enumerable
       my_each do |elem|
         return false unless yield elem
       end
-    end
-
-    unless pattern.nil?
+    else
       my_each do |elem|
         return false unless pattern === elem
       end
     end
 
     true
+  end
+
+  def my_any?(pattern = nil)
+    if block_given?
+      my_each do |elem|
+        return true unless yield elem
+      end
+    else
+      my_each do |elem|
+        return true unless pattern === elem
+      end
+    end
+
+    false
   end
 end
