@@ -32,16 +32,16 @@ module Enumerable
     results
   end
 
-  def my_all?(pat = nil)
+  def my_all?(pattern = nil)
     if block_given?
       my_each do |elem|
         return false unless yield elem
       end
     end
 
-    unless pat.nil?
+    unless pattern.nil?
       my_each do |elem|
-        return false unless pat === elem
+        return false unless pattern === elem
       end
     end
 
