@@ -99,3 +99,28 @@ p %w[ant bear cat].any?(/d/) == %w[ant bear cat].my_any?(/d/)
 p [nil, true, 99].any?(Integer) == [nil, true, 99].my_any?(Integer)
 p [nil, true, 99].any? == [nil, true, 99].my_any?
 p [].any? == [].my_any?
+
+
+puts " "
+print "Press enter to move on to #my_none? tests"
+gets
+system('clear') || system('cls')
+
+puts "Like before, there should be 8 true evaluations below."
+
+print "No words ==5 length: "
+p %w{ant bear cat}.none? { |word| word.length == 5 } == %w{ant bear cat}.my_none? { |word| word.length == 5 }
+print "No words >=4 length: "
+p %w{ant bear cat}.none? { |word| word.length >= 4 } == %w{ant bear cat}.my_none? { |word| word.length >= 4 }
+print "No digits: "
+p %w{ant bear cat}.none?(/d/) == %w{ant bear cat}.my_none?(/d/)
+print "No floats: "
+p [1, 3.14, 42].none?(Float) == [1, 3.14, 42].my_none?(Float)
+print "Empty array: "
+p [].none? == [].my_none?
+print "1 nil: "
+p [nil].none? == [nil].my_none?
+print "Falsy values: "
+p [nil, false].none? == [nil, false].my_none?
+print "Nil plus bools: "
+p [nil, false, true].none? == [nil, false, true].my_none?
