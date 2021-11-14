@@ -47,11 +47,11 @@ module Enumerable
   def my_any?(pattern = nil)
     if block_given?
       my_each do |elem|
-        return true unless yield elem
+        return true if yield elem
       end
     else
       my_each do |elem|
-        return true unless pattern === elem
+        return true if pattern === elem
       end
     end
 
