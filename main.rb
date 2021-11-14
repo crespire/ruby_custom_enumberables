@@ -11,7 +11,7 @@ module Enumerable
 
   def my_each_with_index(*args)
     unless block_given?
-      return args.empty? ? to_enum(:my_each_with_index) : to_enum(:my_each_with_index, args)
+      return args.empty? ? to_enum(:my_each_with_index) : to_enum(:my_each_with_index, *args)
     end
 
     length.times do |i|
