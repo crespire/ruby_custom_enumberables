@@ -5,6 +5,8 @@ module Enumerable
     length.times do |i|
       yield self[i]
     end
+
+    self
   end
 
   def my_each_with_index
@@ -13,5 +15,13 @@ module Enumerable
     length.times do |i|
       yield self[i], i
     end
+
+    self
   end
+
+  def my_select
+    return to_enum unless block_given?
+
+    results = []
+  end 
 end
