@@ -77,3 +77,14 @@ p %w[ant bear cat].all?(/t/) == %w[ant bear cat].my_all?(/t/)
 p [1, 2i, 3.14].all?(Numeric) == [1, 2i, 3.14].my_all?(Numeric)
 p [nil, true, 99].all? == [nil, true, 99].my_all?
 p [].all? == [].my_all?
+
+puts " "
+print "Press enter to move on to #my_any? tests"
+gets
+system('clear') || system('cls')
+p %w[ant bear cat].any? { |word| word.length >= 3 } == %w[ant bear cat].my_any? { |word| word.length >= 3 }
+p %w[ant bear cat].any? { |word| word.length >= 4 } == %w[ant bear cat].my_any? { |word| word.length >= 4 }
+p %w[ant bear cat].any?(/d/) == %w[ant bear cat].my_any?(/d/)
+p [nil, true, 99].any?(Integer) == [nil, true, 99].my_any?(Integer)
+p [nil, true, 99].any? == [nil, true, 99].my_any?
+p [].any? == [].my_any?
