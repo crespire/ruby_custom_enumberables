@@ -64,7 +64,7 @@ module Enumerable
         return false if yield elem
       end
     else
-      if !pattern.nil?
+      unless pattern.nil? # Pattern provided
         my_each do |elem|
           return false if pattern === elem
         end

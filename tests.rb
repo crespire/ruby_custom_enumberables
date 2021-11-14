@@ -106,21 +106,21 @@ print "Press enter to move on to #my_none? tests"
 gets
 system('clear') || system('cls')
 
-puts "Like before, there should be 8 true evaluations below."
+puts "There should be 8 true evaluations below."
 
-print "No words ==5 length: "
+print "No words ==5 length: ".ljust(21, ' ')
 p %w{ant bear cat}.none? { |word| word.length == 5 } == %w{ant bear cat}.my_none? { |word| word.length == 5 }
-print "No words >=4 length: "
+print "No words >=4 length: ".ljust(21, ' ')
 p %w{ant bear cat}.none? { |word| word.length >= 4 } == %w{ant bear cat}.my_none? { |word| word.length >= 4 }
-print "No digits: "
+print "No digits: ".ljust(21, ' ')
 p %w{ant bear cat}.none?(/d/) == %w{ant bear cat}.my_none?(/d/)
-print "No floats: "
+print "No floats: ".ljust(21, ' ')
 p [1, 3.14, 42].none?(Float) == [1, 3.14, 42].my_none?(Float)
-print "Empty array: "
+print "Empty array: ".ljust(21, ' ')
 p [].none? == [].my_none?
-print "1 nil: "
+print "1 nil: ".ljust(21, ' ')
 p [nil].none? == [nil].my_none?
-print "Falsy values: "
+print "Falsey values: ".ljust(21, ' ')
 p [nil, false].none? == [nil, false].my_none?
-print "Nil plus bools: "
+print "Nil plus bools: ".ljust(21, ' ')
 p [nil, false, true].none? == [nil, false, true].my_none?
