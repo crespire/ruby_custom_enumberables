@@ -11,7 +11,11 @@ module Enumerable
   def my_each_with_index(*args)
     return to_enum(:my_each_with_index, *args) unless block_given?
 
-    length.times { |i| yield self[i], i }
+    i = 0
+    for el in self do
+      yield el, i
+      i += 1
+    end
     self
   end
 
