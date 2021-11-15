@@ -71,6 +71,7 @@ module Enumerable
     elsif !sym.nil?
       # Do symbol stuff
     end
+    # Loop
     memo
   end
 end
