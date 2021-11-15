@@ -63,4 +63,8 @@ module Enumerable
     my_each { |elem| result << exp.call(elem) }
     result
   end
+
+  def my_inject(inital = nil, sym = nil)
+    # Remember there's a memo param in the block.
+  end
 end
