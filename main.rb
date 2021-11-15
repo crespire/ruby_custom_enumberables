@@ -40,15 +40,9 @@ module Enumerable
   end
 
   def my_none?(pattern = nil)
-    if block_given?
-      my_each { |elem| return false if yield elem }
-    else
-      unless pattern.nil? # Pattern provided
-        my_each { |elem| return false if pattern === elem }
-      else
-        my_each { |elem| return false if false ^ elem }
-      end
-    end
+    expr = ->(elem) { yield elem } if block_given?
+    expr = pattern ? ->(elem) { pattern === elem } : ->(elem) { false ^ elem } unless block_given?
+    my_each { |elem| return false if expr.call(elem) }
     true
   end
 end
