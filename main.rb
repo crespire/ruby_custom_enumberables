@@ -64,7 +64,13 @@ module Enumerable
     result
   end
 
-  def my_inject(inital = nil, sym = nil)
-    # Remember there's a memo param in the block.
+  def my_inject(initial = nil, sym = nil)
+    memo = initial || first    
+    if block_given?
+      # Do block stuff
+    elsif !sym.nil?
+      # Do symbol stuff
+    end
+    memo
   end
 end
