@@ -71,12 +71,12 @@ p arr3.my_each_with_index { |item, index| puts "#{index}: #{item}" }
 
 
 
-puts " "
-print "Press enter to move on to #my_all? tests"
+puts ' '
+print 'Press enter to move on to #my_all? tests'
 gets
 system('clear') || system('cls')
 
-puts "There should be 6 true evaluations, as each line runs built in all against my_all and checks if results are equal"
+puts 'There should be 6 true evaluations, as each line runs built in all against my_all and checks if results are equal'
 p %w[ant bear cat].all? { |word| word.length >= 3 } == %w[ant bear cat].my_all? { |word| word.length >= 3 }
 p %w[ant bear cat].all? { |word| word.length >= 4 } == %w[ant bear cat].my_all? { |word| word.length >= 4 }
 p %w[ant bear cat].all?(/t/) == %w[ant bear cat].my_all?(/t/)
@@ -87,12 +87,12 @@ p [].all? == [].my_all?
 
 
 
-puts " "
-print "Press enter to move on to #my_any? tests"
+puts ' '
+print 'Press enter to move on to #my_any? tests'
 gets
 system('clear') || system('cls')
 
-puts "Like before, there should be 6 true evaluations below."
+puts 'Like before, there should be 6 true evaluations below.'
 p %w[ant bear cat].any? { |word| word.length >= 3 } == %w[ant bear cat].my_any? { |word| word.length >= 3 }
 p %w[ant bear cat].any? { |word| word.length >= 4 } == %w[ant bear cat].my_any? { |word| word.length >= 4 }
 p %w[ant bear cat].any?(/d/) == %w[ant bear cat].my_any?(/d/)
@@ -101,26 +101,26 @@ p [nil, true, 99].any? == [nil, true, 99].my_any?
 p [].any? == [].my_any?
 
 
-puts " "
-print "Press enter to move on to #my_none? tests"
+puts ' '
+print 'Press enter to move on to #my_none? tests'
 gets
 system('clear') || system('cls')
 
-puts "There should be 8 true evaluations below."
+puts 'There should be 8 true evaluations below.'
 
-print "No words ==5 length: ".ljust(21, ' ')
+print 'No words ==5 length: '.ljust(21, ' ')
 p %w{ant bear cat}.none? { |word| word.length == 5 } == %w{ant bear cat}.my_none? { |word| word.length == 5 }
-print "No words >=4 length: ".ljust(21, ' ')
+print 'No words >=4 length: '.ljust(21, ' ')
 p %w{ant bear cat}.none? { |word| word.length >= 4 } == %w{ant bear cat}.my_none? { |word| word.length >= 4 }
-print "No digits: ".ljust(21, ' ')
+print 'No digits: '.ljust(21, ' ')
 p %w{ant bear cat}.none?(/d/) == %w{ant bear cat}.my_none?(/d/)
-print "No floats: ".ljust(21, ' ')
+print 'No floats: '.ljust(21, ' ')
 p [1, 3.14, 42].none?(Float) == [1, 3.14, 42].my_none?(Float)
-print "Empty array: ".ljust(21, ' ')
+print 'Empty array: '.ljust(21, ' ')
 p [].none? == [].my_none?
-print "1 nil: ".ljust(21, ' ')
+print '1 nil: '.ljust(21, ' ')
 p [nil].none? == [nil].my_none?
-print "Falsey values: ".ljust(21, ' ')
+print 'Falsey values: '.ljust(21, ' ')
 p [nil, false].none? == [nil, false].my_none?
-print "Nil plus bools: ".ljust(21, ' ')
+print 'Nil plus bools: '.ljust(21, ' ')
 p [nil, false, true].none? == [nil, false, true].my_none?
