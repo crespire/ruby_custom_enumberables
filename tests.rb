@@ -77,11 +77,17 @@ gets
 system('clear') || system('cls')
 
 puts 'There should be 6 true evaluations, as each line runs built in all against my_all and checks if results are equal'
+print 'Words >= 3 length: '.ljust(21, ' ')
 p %w[ant bear cat].all? { |word| word.length >= 3 } == %w[ant bear cat].my_all? { |word| word.length >= 3 }
+print 'Words >=4 length: '.ljust(21, ' ')
 p %w[ant bear cat].all? { |word| word.length >= 4 } == %w[ant bear cat].my_all? { |word| word.length >= 4 }
+print 'All regex /t/: '.ljust(21, ' ')
 p %w[ant bear cat].all?(/t/) == %w[ant bear cat].my_all?(/t/)
+print 'All numeric?: '.ljust(21, ' ')
 p [1, 2i, 3.14].all?(Numeric) == [1, 2i, 3.14].my_all?(Numeric)
+print 'No block or param: '.ljust(21, ' ')
 p [nil, true, 99].all? == [nil, true, 99].my_all?
+print 'Empty array '.ljust(21, ' ')
 p [].all? == [].my_all?
 
 
@@ -93,11 +99,17 @@ gets
 system('clear') || system('cls')
 
 puts 'Like before, there should be 6 true evaluations below.'
+print 'Words >= 3 length: '.ljust(21, ' ')
 p %w[ant bear cat].any? { |word| word.length >= 3 } == %w[ant bear cat].my_any? { |word| word.length >= 3 }
+print 'Words >=4 length: '.ljust(21, ' ')
 p %w[ant bear cat].any? { |word| word.length >= 4 } == %w[ant bear cat].my_any? { |word| word.length >= 4 }
+print 'Any digits?: '.ljust(21, ' ')
 p %w[ant bear cat].any?(/d/) == %w[ant bear cat].my_any?(/d/)
+print 'Any Integer? '.ljust(21, ' ')
 p [nil, true, 99].any?(Integer) == [nil, true, 99].my_any?(Integer)
+print 'Any bool and int? '.ljust(21, ' ')
 p [nil, true, 99].any? == [nil, true, 99].my_any?
+print 'Any, empty array'.ljust(21, ' ')
 p [].any? == [].my_any?
 
 
@@ -124,3 +136,20 @@ print 'Falsey values: '.ljust(21, ' ')
 p [nil, false].none? == [nil, false].my_none?
 print 'Nil plus bools: '.ljust(21, ' ')
 p [nil, false, true].none? == [nil, false, true].my_none?
+
+
+puts ' '
+print 'Press enter to move on to #my_count? tests'
+gets
+system('clear') || system('cls')
+
+ary = [1, 2, 4, 2]
+
+print 'Count, bare call: '.ljust(21, ' ')
+p ary.count == ary.my_count
+print 'Count, with item: '.ljust(21, ' ')
+p ary.count(2) == ary.my_count(2)
+print 'Count, block: '.ljust(21, ' ')
+p ary.count{ |x| x.even? } == ary.my_count{ |x| x.even? }
+print 'Count, symbol block: '.ljust(21, ' ')
+p ary.count(&:odd?) == ary.my_count(&:odd?)
