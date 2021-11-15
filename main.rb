@@ -50,7 +50,7 @@ module Enumerable
     return length if item.nil? && !block_given?
 
     count = 0
-    expr = block_given? ? ->(elem) { count += 1 if yield elem  } : ->(elem) { count += 1 if item === elem }
+    expr = block_given? ? ->(elem) { count += 1 if yield elem } : ->(elem) { count += 1 if item === elem }
     my_each { |elem| expr.call(elem) }
     count
   end
