@@ -45,7 +45,7 @@ p arr.each_with_index
 p arr.my_each_with_index
 p arr.each_with_index(1,2)
 p arr.my_each_with_index(1,2)
-puts 'Testing #each block, output should be duplicated'
+puts 'Testing #each_with_index block, output should be duplicated'
 p arr.each_with_index { |item, index| puts "#{index}: #{item}" }
 p arr.my_each_with_index { |item, index| puts "#{index}: #{item}" }
 
@@ -55,7 +55,7 @@ p arr2.each_with_index
 p arr2.my_each_with_index
 p arr2.each_with_index(1,2)
 p arr2.my_each_with_index(1,2)
-puts 'Testing #each block, output should be duplicated'
+puts 'Testing #each_with_index block, output should be duplicated'
 p arr2.each_with_index { |item, index| puts "#{index}: #{item}" }
 p arr2.my_each_with_index { |item, index| puts "#{index}: #{item}" }
 
@@ -65,7 +65,7 @@ p arr3.each_with_index
 p arr3.my_each_with_index
 p arr3.each_with_index(1,2)
 p arr3.my_each_with_index(1,2)
-puts 'Testing #each block, output should be duplicated'
+puts 'Testing #each_with_index block, output should be duplicated'
 p arr3.each_with_index { |item, index| puts "#{index}: #{item}" }
 p arr3.my_each_with_index { |item, index| puts "#{index}: #{item}" }
 
