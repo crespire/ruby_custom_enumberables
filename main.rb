@@ -31,11 +31,8 @@ module Enumerable
   end
 
   def my_any?(pattern = nil)
-    if block_given?
-      my_each { |elem| return true if yield elem }
-    else
-      my_each { |elem| return true if pattern === elem }
-    end
+    expr = block_given? ? ->(elem) { yield elem } : ->(elem) { pattern === elem }
+    my_each { |elem| return true if expr.call(elem) }
     false
   end
 
