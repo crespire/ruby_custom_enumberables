@@ -55,11 +55,12 @@ module Enumerable
     count
   end
 
-  def my_map
-    return to_enum(:my_map) unless block_given?
+  def my_map(block = nil)
+    return to_enum(:my_map) if !block_given? && block.nil?
 
     result = []
-    my_each { |elem| result << yield(elem) }
+    exp = block_given? ? ->(elem) { yield(elem) } : ->(elem) { block.call(elem) }
+    my_each { |elem| result << exp.call(elem) }
     result
   end
 end
