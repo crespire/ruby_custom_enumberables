@@ -153,3 +153,15 @@ print 'Count, block: '.ljust(21, ' ')
 p ary.count{ |x| x.even? } == ary.my_count{ |x| x.even? }
 print 'Count, symbol block: '.ljust(21, ' ')
 p ary.count(&:odd?) == ary.my_count(&:odd?)
+
+
+puts ' '
+print 'Press enter to move on to #my_map? tests'
+gets
+system('clear') || system('cls')
+
+puts 'Should see two Enumerable objects with the same output, then two true evaluations'
+p (1..4).map
+p (1..4).my_map
+p (1..4).map { |i| i*i } == (1..4).my_map { |i| i*i }
+p (1..4).map { "cat" } == (1..4).my_map { "cat" }

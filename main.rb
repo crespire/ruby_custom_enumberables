@@ -2,7 +2,9 @@ module Enumerable
   def my_each
     return to_enum(:my_each) unless block_given?
 
-    length.times { |i| yield self[i] }
+    for el in self do
+      yield el
+    end
     self
   end
 
@@ -47,5 +49,13 @@ module Enumerable
     expr = block_given? ? ->(elem) { count += 1 if yield elem  } : ->(elem) { count += 1 if item === elem }
     my_each { |elem| expr.call(elem) }
     count
+  end
+
+  def my_map
+    return to_enum(:my_map) unless block_given?
+
+    result = []
+    my_each { |elem| result << yield(elem) }
+    result
   end
 end
