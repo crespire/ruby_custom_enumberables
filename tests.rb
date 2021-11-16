@@ -177,7 +177,7 @@ def multiply_els(input)
   input.my_inject(:*)
 end
 
-puts 'Should see 40, then 7 true evaluations'
+puts 'Should see 40, then 8 true evaluations'
 print 'Outputs 40: '.ljust(25, ' ')
 p multiply_els([2, 4, 5])
 print 'Block sum: '.ljust(25, ' ')
@@ -186,7 +186,9 @@ print 'Symbol multiply:'.ljust(25, ' ')
 p (5..10).inject(1, :*) == (5..10).my_inject(1, :*)
 print 'Block multiply: '.ljust(25, ' ')
 p (5..10).inject(1) { |product, n| product * n } == (5..10).my_inject(1) { |product, n| product * n }
-
+print 'Hash, block: '.ljust(25, ' ')
+hsh = { a: 1, b: 2, c: 3 }
+p hsh.inject(0) { |sum, (k, v)| sum + v } == hsh.my_inject(0) { |sum, (k, v)| sum + v }
 print 'Longest word matches: '.ljust(25, ' ')
 longest = %w{ cat sheep bear }.inject do |memo, word|
   memo.length > word.length ? memo : word
