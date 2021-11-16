@@ -1,5 +1,3 @@
-require 'pry-byebug'
-
 module Enumerable
   def my_each
     return to_enum(:my_each) unless block_given?
@@ -81,8 +79,6 @@ module Enumerable
     end
 
     memo = initial || first
-
-    #binding.pry
 
     if block_given?
       my_each_with_index do |ele, i|
