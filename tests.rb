@@ -139,11 +139,13 @@ p [nil, false, true].none? == [nil, false, true].my_none?
 
 
 puts ' '
-print 'Press enter to move on to #my_count? tests'
+print 'Press enter to move on to #my_count tests'
 gets
 system('clear') || system('cls')
 
 ary = [1, 2, 4, 2]
+
+puts 'Should see 4 true evaluations.'
 
 print 'Count, bare call: '.ljust(21, ' ')
 p ary.count == ary.my_count
@@ -156,7 +158,7 @@ p ary.count(&:odd?) == ary.my_count(&:odd?)
 
 
 puts ' '
-print 'Press enter to move on to #my_map? tests'
+print 'Press enter to move on to #my_map tests'
 gets
 system('clear') || system('cls')
 
@@ -165,3 +167,33 @@ p (1..4).map
 p (1..4).my_map
 p (1..4).map { |i| i*i } == (1..4).my_map { |i| i*i }
 p (1..4).map { "cat" } == (1..4).my_map { "cat" }
+
+puts ' '
+print 'Press enter to move on to #my_inject tests'
+gets
+system('clear') || system('cls')
+
+def multiply_els(input)
+  input.my_inject(:*)
+end
+
+puts 'Should see 40, then 4 true evaluations'
+print 'Outputs 40: '.ljust(25, ' ')
+p multiply_els([2, 4, 5])
+print 'Block sum: '.ljust(25, ' ')
+p (5..10).inject { |sum, n| sum + n } == (5..10).my_inject { |sum, n| sum + n }
+print 'Symbol multiply:'.ljust(25, ' ')
+p (5..10).inject(1, :*) == (5..10).my_inject(1, :*)
+print 'Block multiply: '.ljust(25, ' ')
+p (5..10).inject(1) { |product, n| product * n } == (5..10).my_inject(1) { |product, n| product * n }
+
+print 'Longest word matches: '.ljust(25, ' ')
+longest = %w{ cat sheep bear }.inject do |memo, word|
+  memo.length > word.length ? memo : word
+end
+
+longest2 = %w{ cat sheep bear }.my_inject do |memo, word|
+  memo.length > word.length ? memo : word
+end
+
+p longest == longest2
