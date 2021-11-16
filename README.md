@@ -13,4 +13,4 @@ This source code contains my solutions to the exercise in The Odin Project's Rub
 * #my_map
 * #my_inject
 
-These functions should function exactly like the Ruby reference functions, and either give the same output or error out in the same way.
+These functions should function exactly like the Ruby reference functions, and either give the same output or error out in the same way. The test file tests my functions against the Ruby reference ones, and outputs should be the same.
