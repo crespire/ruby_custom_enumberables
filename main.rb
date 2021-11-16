@@ -79,7 +79,7 @@ module Enumerable
     end
 
     memo = initial || first
-    
+
     if block_given?
       my_each_with_index do |ele, i|
         next if initial.nil? && i.zero?
