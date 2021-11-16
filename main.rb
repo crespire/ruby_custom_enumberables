@@ -64,14 +64,36 @@ module Enumerable
     result
   end
 
-  def my_inject(initial = nil, sym = nil)
-    memo = initial || first    
-    if block_given?
-      # Do block stuff
-    elsif !sym.nil?
-      # Do symbol stuff
+  def my_inject(*args)
+    case args
+    in [a] if [Symbol]
+      sym = a
+    in [a] if [Object]
+      initial = a
+    in [a, b] if [Object, Symbol]
+      initial = a
+      sym = b
+    else
+      initial = nil
+      sym = nil
     end
-    # Loop
+
+    memo = initial || first
+    
+    if block_given?
+      my_each_with_index do |ele, i|
+        next if initial.nil? && i.zero?
+
+        memo = yield(memo, ele)
+      end
+    elsif sym
+      my_each_with_index do |ele, i|
+        next if initial.nil? && i.zero?
+
+        memo = memo.send(sym, ele)
+      end
+    end
+
     memo
   end
 end
