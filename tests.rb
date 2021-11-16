@@ -177,7 +177,7 @@ def multiply_els(input)
   input.my_inject(:*)
 end
 
-puts 'Should see 40, then 4 true evaluations'
+puts 'Should see 40, then 7 true evaluations'
 print 'Outputs 40: '.ljust(25, ' ')
 p multiply_els([2, 4, 5])
 print 'Block sum: '.ljust(25, ' ')
@@ -197,3 +197,38 @@ longest2 = %w{ cat sheep bear }.my_inject do |memo, word|
 end
 
 p longest == longest2
+
+def substrings_cust(input, dictionary)
+  return nil if input.empty?
+  return nil if dictionary.empty?
+
+  sanitized = input.downcase.split
+  dictionary.my_inject(Hash.new(0)) do |found, word|
+    sanitized.each do |match|
+      found[word] += 1 if match.include? word
+    end
+    found
+  end
+end
+
+def substrings(input, dictionary)
+  return nil if input.empty?
+  return nil if dictionary.empty?
+
+  sanitized = input.downcase.split
+  dictionary.inject(Hash.new(0)) do |found, word|
+    sanitized.each do |match|
+      found[word] += 1 if match.include? word
+    end
+    found
+  end
+end
+
+dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
+
+print 'Substring matches: '.ljust(25, ' ')
+p substrings('below', dictionary) == substrings_cust("below", dictionary)
+print 'Substring, long: '.ljust(25, ' ')
+p substrings("Howdy partner, sit down! How's it going?", dictionary) == substrings_cust("Howdy partner, sit down! How's it going?", dictionary)
+print 'Substring, long cap: '.ljust(25, ' ')
+p substrings("it", dictionary) == substrings_cust("it", dictionary)
